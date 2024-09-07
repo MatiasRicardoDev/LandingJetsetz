@@ -1,0 +1,39 @@
+.flights-tip-section p,
+.flights-tip-section div {
+  font-size: 18px;
+  line-height: normal;
+  color: #000000 !important;
+}
+
+.flights-tip-section h2 {
+  color: #2b2b2b;
+  font-size: 31px;
+  font-weight: 400;
+  margin: 0 0 30px;
+}
+
+.flights-tip-section h3 {
+  font-size: 21px;
+  color: #313131;
+  margin: 1em 0;
+}
+
+.flights-tip-section em {
+  font-style: italic;
+  color: #000000;
+}
+
+.flightTips p {
+  text-align: justify;
+  color: #7e7e7e !important;
+  font-weight: 300;
+}
+
+.flightTips a {
+  color: #2d80ab !important;
+  font-weight: 700;
+}
+
+.flightTips h3 {
+  color: #4e4e4e !important;
+}
