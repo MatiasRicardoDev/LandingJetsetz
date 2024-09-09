@@ -29,7 +29,6 @@ export default function InlineAds({
       </Grid>
     );
   }
-
   return (
     <Grid
       justifyContent="center"
@@ -49,7 +48,7 @@ export default function InlineAds({
             item.fullLogoUrl ?? `https://www.kayak.com${item.logoUrl}`;
           const link =
             item.fullLink ?? `https://www.kayak.com${item?.deepLink}`;
-
+          
           return (
             <motion.div
               key={`inline-${link}-${index}`}
@@ -59,7 +58,7 @@ export default function InlineAds({
                 transition: { duration: 0.3, delay: index }
               }}
               style={{ height: '84px' }}>
-              <CardAds // Aca guardamos la URL
+              <CardAds 
                 logoUrl={logoUrl}
                 headline={item.headline}
                 description={item.description}

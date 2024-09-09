@@ -87,7 +87,7 @@ export default memo(function FlightInlineAds({ maxItems, ...rest }: Props) {
 
     return items;
   }, [inlineAdsQuery.data?.inlineItems, params]);
-
+  
   return (
     <Box>
       {inlineItems?.length > 0 && (

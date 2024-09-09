@@ -7,7 +7,12 @@ interface Props {
   bookingButtonText?: string;
   link: any;
 }
+
+const addUrlClick = 'https://servedbyadbutler.com/redirect.spark?MID=188096&plid=2582010&setID=774464&channelID=0&CID=0&banID=522397223&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=5a8829e3e57e1514cc066c93401f1dc125594216&location=';
+
+
 export default function CardAds(props: Props) {
+  
   return (
     <Flex
       alignItems="center"
@@ -38,7 +43,7 @@ export default function CardAds(props: Props) {
             fontSize="sm"
             lineHeight="14px"
             title={props.description}>
-            {props.description + 'HOLAA!!'}
+            {props.description}
           </Text>
         </Box>
       </Flex>
@@ -47,10 +52,10 @@ export default function CardAds(props: Props) {
         <Button
           as="a"
           target="_blank"
-          href={"https://servedbyadbutler.com/redirect.spark?MID=188096&plid=2580638&setID=774464&channelID=0&CID=0&banID=522393187&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=2c623fd5d9fcef2cdc8fc69feff8baf14f8a5174&location="+props.link}
+          href={addUrlClick+props.link}
           colorScheme="jaffa"
           textDecoration="none">
-          {props.bookingButtonText +'Aca es el boton' ?? 'View Deal !!!'}
+          {props.bookingButtonText ?? 'View Deal'}
         </Button>
       </Box>
     </Flex>

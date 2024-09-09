@@ -1,6 +1,7 @@
 export const getCompareFlights = async (data: any) => {
+  const url =`${process.env.NEXT_PUBLIC_API_URL}/${data.type ?? 'flights'}/compare`
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/${data.type ?? 'flights'}/compare`,
+    url,
     {
       method: 'POST',
       headers: {
@@ -9,7 +10,8 @@ export const getCompareFlights = async (data: any) => {
       body: JSON.stringify(data)
     }
   );
-
+  
+  
   return response.json();
 };
 
