@@ -17,7 +17,7 @@ export default function CardAds(props: Props) {
     <Flex
       alignItems="center"
       bg="white"
-      justifyContent="space-between"
+      justifyContent="space-between" 
       p="8px"
       position="relative"
       rounded="md"
