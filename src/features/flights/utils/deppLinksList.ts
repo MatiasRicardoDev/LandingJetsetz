@@ -1,5 +1,6 @@
 import { getKayakCountry } from '@/utils/kayakCountries';
-import * as linksJson from './deepLinks.json';
+//import * as deepLinksJson from './deepdeepLinksJson';
+import {deepLinksJson} from './deepLinksJson';
 
 export class LinkGenerator {
 
@@ -38,14 +39,14 @@ export class LinkGenerator {
 
   private linkParser(){
     let data:any[] = []
-    linksJson.available_links.forEach((item)=>{
+    deepLinksJson.available_links.forEach((item)=>{
       let domain;
       let linkToReplace;
 
       if(item.is_special){
-        linkToReplace = linksJson.special_link;
+        linkToReplace = deepLinksJson.special_link;
       }else{
-        linkToReplace = linksJson.base_link;
+        linkToReplace = deepLinksJson.base_link;
       }
 
       if(item.name == 'kayak'){

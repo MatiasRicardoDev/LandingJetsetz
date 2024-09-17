@@ -1,4 +1,4 @@
-{
+export const deepLinksJson = {
   "available_links":[
     {
       "name":"momondo",
