@@ -52,7 +52,7 @@ export default function CardAds(props: Props) {
         <Button
           as="a"
           target="_blank"
-          href={addUrlClick+props.link}
+          href={props.link}
           colorScheme="jaffa"
           textDecoration="none">
           {props.bookingButtonText ?? 'View Deal'}

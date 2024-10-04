@@ -31,12 +31,13 @@ export default function CompareItem(props: Props) {
         }}
         onClick={e => {
           e.preventDefault();
+          // TODO
+          
 
           props.onChecked((state: any) => {
             if (state.some((i: any) => i.id === item.id)) {
               return state.filter((i: any) => i.id !== item.id);
             }
-
             return [...state, item];
           });
         }}>

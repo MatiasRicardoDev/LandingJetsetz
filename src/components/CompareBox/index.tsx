@@ -9,6 +9,8 @@ import { generateKey, saveOnBrowser } from '../../utils/saveOnBrowser';
 import ButtonDeepLink from '../ButtonDeepLink';
 import CompareItem from '../CompareItem';
 
+import {addLinksToCompare} from './adButtler'
+
 interface Props {
   items: any;
   search?: any;
@@ -40,6 +42,12 @@ export default function CompareBox(props: Props) {
   };
 
   const handleCompare = () => {
+    // Aca hace el compare all
+
+    selectedItems.forea
+
+    console.info(`Estos son los deeps Items ==>  ${JSON.stringify(deepItems)}`)
+    console.info(`Estos son los selected deeps Items ==>  ${JSON.stringify(selectedItems)}`)
     try {
       if (!areItems || (deepItems.length > 0 && selectedItems < 1)) {
         if (deepItems.length === 2) {
@@ -87,9 +95,6 @@ export default function CompareBox(props: Props) {
     }
   };
 
-  console.log('items:', props.items);
-  console.log('sorted:', sortedItems);
-  console.log('deepItems', deepItems);
 
   const isRentalCar = props.type === 'cars';
 
@@ -134,10 +139,10 @@ export default function CompareBox(props: Props) {
         {/* #1 & #2*/}
         {(sortedItems || []).slice(0, 2).map((item: any) => {
           const { id } = item;
-
+            // ACA compare item
           return (
             <CompareItem
-              key={id}
+              key={id} 
               item={item}
               selectedItems={selectedItems}
               onChecked={setSelectedItems}

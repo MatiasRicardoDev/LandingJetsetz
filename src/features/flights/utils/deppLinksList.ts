@@ -42,7 +42,7 @@ export class LinkGenerator {
     deepLinksJson.available_links.forEach((item)=>{
       let domain;
       let linkToReplace;
-
+ 
       if(item.is_special){
         linkToReplace = deepLinksJson.special_link;
       }else{
@@ -74,33 +74,10 @@ export class LinkGenerator {
 
       data.push({"name":item.name,"link":result});
     })
-
+    console.log("DATA ===> ",data)
     return data;
   }
 
 
 }
 
-
-
-
-//https://*momondoDomain*/in?a=*aId*&enc_eid=0&enc_lid=*enc_lid*&encoder=27_1&enc_pid=deeplinks&url=/flights/*origin*-*destination*/*formattedDate*/*formattedDate2*/*cabinClass*/*adults*adults*childrenText*?sort=bestflight_a`
-
-
-/*
-https://js.smartfares.com/?
-cmp=*pValue*&
-Type=*tripTypeCode*&
-Adult=*adults*&
-Child=*children*&
-Lap=0&
-Date0=*formattedDate*&
-Date1=*formattedDate2*&
-OrigCity0=*origin*&
-DestCity0=*destination*&
-Airline=&
-Cabin=Y&
-lang=en&
-curr=usd
-
-*/

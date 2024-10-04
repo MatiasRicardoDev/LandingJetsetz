@@ -59,7 +59,7 @@ export default function CompareHotelsResults() {
     ? publishersQuery.data?.compareToItems || []
     : saveOnBrowser.getFromBrowser(key);
 
-  console.log({ query });
+  
 
   return (
     <CompareResults
