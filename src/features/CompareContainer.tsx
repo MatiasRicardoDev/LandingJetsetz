@@ -44,7 +44,6 @@ export default function CompareContainer({
 
   const currentTabIndex = useMemo(() => TABS_INDEX[type], [type]);
 
-  console.log({ type, currentTabIndex });
 
   return (
     <Box backgroundColor="blue.100" backgroundRepeat="no-repeat" {...rest}>

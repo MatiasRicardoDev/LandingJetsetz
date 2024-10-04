@@ -26,7 +26,6 @@ export default function DestinationContainer() {
     staleTime: 1000 * 60 * 60 * 24 * 30 // 30 days
   });
 
-  console.log(data);
 
   const {
     destinationName,
@@ -36,8 +35,6 @@ export default function DestinationContainer() {
     thingsToDo,
     tips
   } = destinationAdapter(data);
-
-  console.log({ family, thingsToDo });
 
   return (
     <Box>

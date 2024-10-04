@@ -25,7 +25,7 @@ export const searchFormatsForFlights = (sug: Airport) => {
  */
 export const searchFormatsForCities = (sug: City | Airport) => {
   try {
-    console.log({ sug });
+    
 
     const airport = sug as Airport;
     const isAirport = airport?.id && sug?.IATA;

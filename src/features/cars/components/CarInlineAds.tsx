@@ -19,8 +19,6 @@ interface Props extends BoxProps {
 export default memo(function CarInlineAds({ maxItems, ...rest }: Props) {
   const { carSearchForm: params } = useCarStore();
 
-  console.log('InlineAds: ', params);
-
   const inlineAdsQuery = useQuery({
     queryKey: ['inlineCarAds', params],
     queryFn: () => {
@@ -34,8 +32,7 @@ export default memo(function CarInlineAds({ maxItems, ...rest }: Props) {
           ? params?.secondDate
           : parse(params?.secondDate ?? '', 'yyyy-MM-dd', new Date());
 
-      console.log({ params });
-
+      
       return getInlineCarAds({
         ...params,
         firstDate: firstDate ? format(firstDate, 'MM/dd/yyyy') : undefined,
@@ -54,11 +51,6 @@ export default memo(function CarInlineAds({ maxItems, ...rest }: Props) {
     if (!params) return [];
 
     const { deepLinkCheapflights, deepLinkUrl } = openDeepLinkTab(params);
-
-    console.log({
-      deepLinkCheapflights,
-      deepLinkUrl
-    });
 
     let items = (inlineAdsQuery.data?.inlineItems || []).slice(0, 3);
 
@@ -97,7 +89,6 @@ export default memo(function CarInlineAds({ maxItems, ...rest }: Props) {
     return items;
   }, [inlineAdsQuery.data?.inlineItems, params]);
 
-  console.log({ inlineItems });
 
   return (
     <Box>

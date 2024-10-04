@@ -46,25 +46,6 @@ export const openDeepLinkTab = (
     childrenText = `/${children}children`;
   }
 
-  /**
-   * Use DeepLink feature (open a new url in a new tab)
-   * TODO: ACA va los links de adbutler
-   */
-  /*const kayakDomain = getKayakCountry();
-  const deepLinkUrl = `https://${kayakDomain}/in?a=${aId}&enc_eid=0&enc_lid=${enc_lid}&encoder=27_1&enc_pid=deeplinks&url=/${type === 'rental-car' ? 'cars' : type}/${origin}-${destination}/${formattedDate}/${formattedDate2}/${cabinClass}/${adults}adults${childrenText}?sort=bestflight_a`;
-
-
-  const momondoDomain = 'www.momondo.com';
-  const deepLinkMomondoUrl = `https://${momondoDomain}/in?a=${aId}&enc_eid=0&enc_lid=${enc_lid}&encoder=27_1&enc_pid=deeplinks&url=/flights/${origin}-${destination}/${formattedDate}/${formattedDate2}/${cabinClass}/${adults}adults${childrenText}?sort=bestflight_a`;
-
-  const deepLinkSmartFaresUrl = `https://js.smartfares.com/?cmp=${pValue}&Type=${tripTypeCode}&Adult=${adults}&Child=${children}&Lap=0&Date0=${formattedDate}&Date1=${formattedDate2}&OrigCity0=${origin}&DestCity0=${destination}&Airline=&Cabin=Y&lang=en&curr=usd`;
-
-
-
-  const deepLinkCheapflights = `https://www.cheapflights.com/in?a=${aId}&enc_eid=0&enc_lid=${enc_lid}&encoder=27_1&enc_pid=deeplinks&url=/flights/${origin}-${destination}/${formattedDate}/${formattedDate2}/${cabinClass}/${adults}adults${childrenText}?sort=bestflight_a`;*/
-
-  //console.log({ deepLinkUrl, deepLinkMomondoUrl });
-
   var generator:LinkGenerator = new LinkGenerator();
   generator.aId = aId;
   generator.enc_lid = enc_lid;
@@ -78,13 +59,12 @@ export const openDeepLinkTab = (
   generator.pValue = pValue;
   generator.tripTypeCode = tripTypeCode;
 
-  //console.log('LINK ORIGINAL',deepLinkMomondoUrl)
-  let linksGenerados = generator.getLink()
+  const linksGenerados = generator.getLink()
 
   const deepLinkMomondoUrl = linksGenerados[0].link;
   const deepLinkUrl = linksGenerados[1].link;
-  const deepLinkSmartFaresUrl = linksGenerados[2].link;
-  const deepLinkCheapflights = linksGenerados[3].link;
+  const deepLinkCheapflights = linksGenerados[2].link;
+  const deepLinkSmartFaresUrl = linksGenerados[3].link;
 
   /**
    * Use our own compare results page

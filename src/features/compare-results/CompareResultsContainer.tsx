@@ -12,8 +12,6 @@ export default function CompareResultsContainer() {
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
 
-  console.log({ type });
-
   return (
     <Suspense>
       {type === 'hotels' && <CompareHotelsResults />}

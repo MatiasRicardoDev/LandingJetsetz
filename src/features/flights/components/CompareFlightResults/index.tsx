@@ -60,8 +60,7 @@ export default function CompareFlightResults() {
     ? publishersQuery.data?.compareToItems || []
     : saveOnBrowser.getFromBrowser(key);
 
-  console.log({ query });
-
+ 
   return (
     <CompareResults
       query={query}

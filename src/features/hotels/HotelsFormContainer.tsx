@@ -113,7 +113,7 @@ export default function Hotels() {
               citySearch.setSearch(q);
             }}
             selectSuggestion={(val: any) => {
-              console.log({ val });
+              
               const isAirport = val.id && val.IATA;
 
               if (isAirport) {

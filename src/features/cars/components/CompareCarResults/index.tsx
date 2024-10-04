@@ -58,8 +58,6 @@ export default function CompareCarResults() {
     ? publishersQuery.data?.compareToItems || []
     : saveOnBrowser.getFromBrowser(key);
 
-  console.log({ key, query, isKeyExpired, publishers });
-
   return (
     <CompareResults
       query={query}

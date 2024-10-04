@@ -25,6 +25,7 @@ import HotelHeaderResults from '@/features/hotels/components/HotelHeaderResults'
 import { getDeepIframeUrl } from '@/utils/kayakUrl';
 
 import './style.css';
+import { addLinksToCompare } from '@/components/CompareBox/adButtler';
 
 interface Props {
   query: any;
@@ -44,8 +45,6 @@ export default function CompareResults({
   };
 
   const type = query.type ?? 'flights';
-
-  console.log({ query, type });
 
   return (
     <Box
@@ -84,11 +83,16 @@ export default function CompareResults({
           height="100%">
           {publishers &&
             (publishers || []).map((publisher: any) => {
-              let URI = getDeepIframeUrl(publisher);
-              console.log({ publisher });
+              let url = getDeepIframeUrl(publisher);
+
+              let URI = addLinksToCompare(publisher.name,url);
+              
               if (publisher.name === 'smartfares') {
                 URI = publisher.deepLink;
+                //URI = addLinksToCompare(publisher.name,url);
               }
+
+              
 
               return (
                 <GridItem
@@ -189,7 +193,6 @@ export default function CompareResults({
                       )}
                     </HStack>
                   </Flex>
-
                   <iframe width="100%" height="100%" src={URI} />
                 </GridItem>
               );
