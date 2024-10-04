@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 
 import { getKayakCountry } from '@/utils/kayakCountries';
 import { aId, pValue } from '@/utils/kayakPValue';
-import { findAds } from '@/services/adButler.service';
+
 import { LinkGenerator } from './deppLinksList';
 
 const enc_lid = `compare_fligths`;
