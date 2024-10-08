@@ -25,7 +25,6 @@ import HotelHeaderResults from '@/features/hotels/components/HotelHeaderResults'
 import { getDeepIframeUrl } from '@/utils/kayakUrl';
 
 import './style.css';
-import { addLinksToCompare } from '@/components/CompareBox/adButtler';
 
 interface Props {
   query: any;
@@ -83,15 +82,14 @@ export default function CompareResults({
           height="100%">
           {publishers &&
             (publishers || []).map((publisher: any) => {
-              let url = getDeepIframeUrl(publisher);
-
-              let URI = addLinksToCompare(publisher.name,url);
+              
+              let URI = getDeepIframeUrl(publisher);
               
               if (publisher.name === 'smartfares') {
-                URI = publisher.deepLink;
-                //URI = addLinksToCompare(publisher.name,url);
+                URI = 'https://servedbyadbutler.com/redirect.spark?MID=187841&plid=2612318&setID=757110&channelID=0&CID=0&banID=522438433&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=6d2cbe0a11c04b034e50a8e6ce5097f8f5d022bb&location='+publisher.deepLink;
+                
               }
-
+              
               
 
               return (
