@@ -8,8 +8,8 @@ import { motion } from 'framer-motion';
 import { generateKey, saveOnBrowser } from '../../utils/saveOnBrowser';
 import ButtonDeepLink from '../ButtonDeepLink';
 import CompareItem from '../CompareItem';
+import { LinkAdButler, linksToCompareAdButler } from './links';
 
-import {addLinksToCompare} from './adButtler'
 
 interface Props {
   items: any;
@@ -32,22 +32,49 @@ export default function CompareBox(props: Props) {
   const redirectToDeepLink = (to = 'kayak') => {
     setTimeout(() => {
       if (to === 'kayak') {
+        
         //@ts-ignore
-        window.location.href = window?.deepLinkUrl;
+        window.location.href = 'https://servedbyadbutler.com/redirect.spark?MID=187841&plid=2612566&setID=757110&channelID=0&CID=0&banID=522438919&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=d4ee3bd7cf2a3a5930f1490cac3e2ed668c41d41&location='+window?.deepLinkUrl;;
       } else {
+        
         //@ts-ignore
-        window.location.href = window?.deepLinkMomondoUrl;
+        window.location.href = 'https://servedbyadbutler.com/redirect.spark?MID=187841&plid=2612567&setID=757110&channelID=0&CID=0&banID=522438920&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=dc7eb9882afd8e5e9c6d3c6ffe947064a37496ca&location='+window?.deepLinkMomondoUrl;;
       }
     }, 5000);
   };
 
+  selectedItems.forEach((element:any) => {
+    console.log('NAME ==> ',element.name)
+  });
+
+
+  const readSelected = ()=>{
+    
+    selectedItems.forEach((item:any) => {
+        console.log('ITEM => NAME => ',item.name);
+        let adButlerLink:LinkAdButler[] = linksToCompareAdButler.filter(x => x.name == item.name);
+        if(adButlerLink.length > 0){
+          fetch(adButlerLink[0].link)
+            .then(response => console.info('Data Clicked => ',adButlerLink[0].name));
+        }
+        console.log('links filtrados => ',JSON.stringify(adButlerLink))
+
+        /*if(item.name == 'Cheapoair'){
+          //item.deepLink += chepoair+item.deepLink
+          fetch(chepoair)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data); // Procesar los datos
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        }*/
+    });
+  }
+
   const handleCompare = () => {
-    // Aca hace el compare all
-
-    selectedItems.forea
-
-    console.info(`Estos son los deeps Items ==>  ${JSON.stringify(deepItems)}`)
-    console.info(`Estos son los selected deeps Items ==>  ${JSON.stringify(selectedItems)}`)
+    readSelected()
     try {
       if (!areItems || (deepItems.length > 0 && selectedItems < 1)) {
         if (deepItems.length === 2) {
