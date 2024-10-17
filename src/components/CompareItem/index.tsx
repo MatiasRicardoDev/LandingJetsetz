@@ -9,8 +9,10 @@ interface Props {
 export default function CompareItem(props: Props) {
   const { item } = props;
 
-  const isActive = props.selectedItems.find(i => i?.id === item?.id);
+  console.log('ESTOS SON LOS ITEMS ==> ',props)
 
+  const isActive = props.selectedItems.find(i => i?.id === item?.id);
+  
   return (
     <Grid gridTemplateColumns={'1fr'} alignItems="center" p="1px" mb="8px">
       <Button
@@ -45,7 +47,7 @@ export default function CompareItem(props: Props) {
           width="154px"
           // height="36px"
           objectFit="cover"
-          src={`https://www.kayak.com/${item.logoUrl}`}
+          src={ item.name == "CheapFlights" ? "/images/cheapflights_logo.png" : `https://www.kayak.com/${item.logoUrl}`}
           alt={item.providerCode}
         />
       </Button>
