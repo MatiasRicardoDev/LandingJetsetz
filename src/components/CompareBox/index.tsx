@@ -94,6 +94,9 @@ console.log('PRUEBA => ',window.deepLinkUrl)
         redirectToDeepLink('kayak');
       }
 
+
+      console.log('DEEP ITEMS => ',deepItems)
+
       const toCompare =
         selectedItems.length > 0
           ? selectedItems

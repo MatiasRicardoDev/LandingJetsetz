@@ -84,7 +84,8 @@ export default function CompareResults({
             (publishers || []).map((publisher: any) => {
               
               let URI = getDeepIframeUrl(publisher);
-              
+              URI = URI.replace('https://www.kayak.comhttps://servedbyadbutler.com/','https://servedbyadbutler.com/')
+              console.log('URI => ',URI)
               if (publisher.name === 'smartfares') {
                 URI = 'https://servedbyadbutler.com/redirect.spark?MID=187841&plid=2612318&setID=757110&channelID=0&CID=0&banID=522438433&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=6d2cbe0a11c04b034e50a8e6ce5097f8f5d022bb&location='+publisher.deepLink;
                 
