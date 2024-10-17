@@ -77,15 +77,21 @@ export default function FlightsFormContainer({ isBusiness = false }: Props) {
     }
   });
 
+
   const { isPending, data, error, mutate } = useMutation({
     mutationFn: async (data: any) => {
-      return getCompareFlights(data);
+      let result = await getCompareFlights(data);
+      console.log('Este es el RESULT=>',result.compareToItems)
+      result.compareToItems[0].name = 'CheapFlights'
+      result.compareToItems[0].deepLink = localStorage.getItem('cf_link');
+      console.log('Este es el RESULT EDITADO =>',result.compareToItems)
+      return result;
     }
   });
 
   const onSubmit = handleSubmit(data => {
     const isValid = validateRequire.validate(data);
-
+    console.log('Esto es data Al Darle Submit',data)
     if (!isValid) {
       return;
     }
@@ -112,7 +118,7 @@ export default function FlightsFormContainer({ isBusiness = false }: Props) {
       setValue('origin', airportSearch?.airportNearToUser?.IATA);
     }
   }, [airportSearch?.airportNearToUser?.IATA, setValue]);
-
+  console.log('ESTE ES OTRA DATA => ',data)
   return (
     <Grid
       gridTemplateColumns={{

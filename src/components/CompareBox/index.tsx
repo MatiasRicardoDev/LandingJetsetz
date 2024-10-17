@@ -43,11 +43,6 @@ export default function CompareBox(props: Props) {
     }, 5000);
   };
 
-  selectedItems.forEach((element:any) => {
-    console.log('NAME ==> ',element.name)
-  });
-
-
   const readSelected = ()=>{
     
     selectedItems.forEach((item:any) => {
@@ -57,24 +52,15 @@ export default function CompareBox(props: Props) {
           fetch(adButlerLink[0].link)
             .then(response => console.info('Data Clicked => ',adButlerLink[0].name));
         }
-        console.log('links filtrados => ',JSON.stringify(adButlerLink))
-
-        /*if(item.name == 'Cheapoair'){
-          //item.deepLink += chepoair+item.deepLink
-          fetch(chepoair)
-          .then(response => response.json())
-          .then(data => {
-            console.log(data); // Procesar los datos
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-        }*/
+        
     });
   }
 
   const handleCompare = () => {
+    
     readSelected()
+    //console.log('PRIMERO =>',selectedItems)
+console.log('PRUEBA => ',window.deepLinkUrl)
     try {
       if (!areItems || (deepItems.length > 0 && selectedItems < 1)) {
         if (deepItems.length === 2) {
@@ -112,7 +98,7 @@ export default function CompareBox(props: Props) {
         selectedItems.length > 0
           ? selectedItems
           : (sortedItems || []).slice(0, 4);
-
+      
       const key = generateKey(props?.type ?? 'flights');
       saveOnBrowser(key, toCompare);
 
@@ -176,6 +162,8 @@ export default function CompareBox(props: Props) {
             />
           );
         })}
+
+        
 
         {/* #2 (Smartfares) (disable for now) */}
         {/* <ButtonSmartfares selectedItems={selectedItems} onChecked={setSelectedItems} /> */}

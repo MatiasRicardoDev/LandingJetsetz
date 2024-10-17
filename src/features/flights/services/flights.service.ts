@@ -13,6 +13,9 @@ export const getCompareFlights = async (data: any) => {
     }
   );
   
+  //let result = await response.json();
+  //console.log('Esto es el body',data)
+  //console.log('Esto es lo devuelto de la api => ',result.compareToItems)
   
   return response.json();
 };

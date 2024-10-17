@@ -8,8 +8,6 @@ interface Props {
   link: any;
 }
 
-const addUrlClick = 'https://servedbyadbutler.com/redirect.spark?MID=188096&plid=2582010&setID=774464&channelID=0&CID=0&banID=522397223&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=5a8829e3e57e1514cc066c93401f1dc125594216&location=';
-
 
 export default function CardAds(props: Props) {
   
