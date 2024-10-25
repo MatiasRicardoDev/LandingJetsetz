@@ -65,7 +65,8 @@ export const openDeepLinkTab = (
   const deepLinkUrl = linksGenerados[1].link;
   const deepLinkCheapflights = linksGenerados[2].link;
   const deepLinkSmartFaresUrl = linksGenerados[3].link;
-  localStorage.setItem('cf_link',linksGenerados[1].link);
+  localStorage.removeItem('cf_link');
+  localStorage.setItem('cf_link',linksGenerados[2].link);
 
   /**
    * Use our own compare results page
