@@ -16,11 +16,11 @@ const getQueryParams = (search: string) => {
   const urlParams = new URLSearchParams(search);
 
   return Object.fromEntries(urlParams);
-};
+}; 
 
 export default function CompareFlightResults() {
   const { updateFlightSearchForm } = useFlightStore();
-
+  
   const [query, setQuery] = useState<any>({});
   const isMounted = useMounted();
 
@@ -59,8 +59,11 @@ export default function CompareFlightResults() {
   const publishers = isKeyExpired
     ? publishersQuery.data?.compareToItems || []
     : saveOnBrowser.getFromBrowser(key);
-
- 
+// name = CheapFlights
+  publishers.map((item:any) => {
+    console.error(`este es el item`,item);
+    
+  });
   return (
     <CompareResults
       query={query}

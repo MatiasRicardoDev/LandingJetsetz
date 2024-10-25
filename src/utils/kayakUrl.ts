@@ -48,8 +48,12 @@ export const generateIframeUrl = (data?: IParams): string => {
   )}&showOn=panel&searchId=${searchId}`;
 };
 
-export const getDeepIframeUrl = (data?: { deepLink: string }): string => {
-  return `https://www.kayak.com${data?.deepLink}&p=${pValue}`;
+export const getDeepIframeUrl = (data?: { deepLink: string,name?:string }): string => {
+  if(data?.name == 'CheapFlights'){
+    return localStorage.getItem('cf_link') || '';
+  }else{
+    return `https://www.kayak.com${data?.deepLink}&p=${pValue}`;
+  }
 };
 
 export const getImpressionUrl = (data?: { impressionUrl: string }): string => {

@@ -39,7 +39,10 @@ export default function CompareResults({
 }: Props) {
   const [selectedPublisher, setSelectedPublisher] = useState<any>({});
 
-  const handleOpenOfferInNewTab = (url: string) => {
+  const handleOpenOfferInNewTab = (url: string,name?:string) => {
+    if(name == 'CheapFlights'){
+      window.open(localStorage.getItem('cf_link')!, '_blank');  
+    }
     window.open(url, '_blank');
   };
 
@@ -84,8 +87,12 @@ export default function CompareResults({
             (publishers || []).map((publisher: any) => {
               
               let URI = getDeepIframeUrl(publisher);
-              URI = URI.replace('https://www.kayak.comhttps://servedbyadbutler.com/','https://servedbyadbutler.com/')
-              console.log('URI => ',URI)
+              //URI = URI.replace('https://www.kayak.comhttps://servedbyadbutler.com/','https://servedbyadbutler.com/')
+              //console.log('URI => ',URI)
+              console.error('ESTOS SON LOS PUBLISHERS',publisher)
+              /*if (publisher.name === 'CheapFlights') {
+                URI = localStorage.getItem('')
+              }*/
               if (publisher.name === 'smartfares') {
                 URI = 'https://servedbyadbutler.com/redirect.spark?MID=187841&plid=2612318&setID=757110&channelID=0&CID=0&banID=522438433&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=6d2cbe0a11c04b034e50a8e6ce5097f8f5d022bb&location='+publisher.deepLink;
                 
@@ -183,7 +190,7 @@ export default function CompareResults({
                                 fontSize="18px"
                                 cursor="pointer"
                                 onClick={() => {
-                                  handleOpenOfferInNewTab(URI);
+                                  handleOpenOfferInNewTab(URI); 
                                 }}
                               />
                             </Center>
@@ -192,7 +199,7 @@ export default function CompareResults({
                       )}
                     </HStack>
                   </Flex>
-                  <iframe width="100%" height="100%" src={URI} />
+                  <iframe width="100%" height="100%" src={ publisher.name == 'CheapFlights' ? localStorage.getItem('cf_link')! :URI  } />
                 </GridItem>
               );
             })}
