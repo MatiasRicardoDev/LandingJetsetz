@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import {
   Box,
+  Button,
   Center,
   Container,
   Flex,
@@ -19,9 +20,12 @@ import { BiLinkExternal } from 'react-icons/bi';
 import { BsWindowFullscreen, BsWindowX } from 'react-icons/bs';
 
 import CarHeaderResults from '@/features/cars/components/CarHeaderResults';
+import CarInlineAds from '@/features/cars/components/CarInlineAds';
 import FlightHeaderResults from '@/features/flights/components/FlightHeaderResults';
 import FlightInlineAds from '@/features/flights/components/FlightInlineAds';
 import HotelHeaderResults from '@/features/hotels/components/HotelHeaderResults';
+import HotelInlineAds from '@/features/hotels/components/HotelInlineAds';
+import { isIframeBlockedBrand } from '@/utils/iframeBlockedBrands.util';
 import { getDeepIframeUrl } from '@/utils/kayakUrl';
 
 import './style.css';
@@ -47,7 +51,7 @@ export default function CompareResults({
   };
 
   const type = query.type ?? 'flights';
-
+  console.log({ query, type });
   return (
     <Box
       backgroundColor="rgb(54,82,138)"
@@ -57,13 +61,15 @@ export default function CompareResults({
       height="100%">
       <Container maxW="1920px" backdropFilter={'blur(10px)'} height="100%">
         {/* nav */}
-        {type === 'hotels' && <HotelHeaderResults query={query} />}
         {type === 'cars' && <CarHeaderResults query={query} />}
         {type === 'flights' && <FlightHeaderResults query={query} />}
+        {type === 'hotels' && <HotelHeaderResults query={query} />}
 
         {/* Ads */}
         <Box my={4} mx={2}>
+          {type === 'cars' && <CarInlineAds maxItems={2} />}
           {type === 'flights' && <FlightInlineAds maxItems={2} />}
+          {type === 'hotels' && <HotelInlineAds maxItems={2} />}
         </Box>
 
         {isLoading && (
@@ -85,20 +91,13 @@ export default function CompareResults({
           height="100%">
           {publishers &&
             (publishers || []).map((publisher: any) => {
-              
               let URI = getDeepIframeUrl(publisher);
-              //URI = URI.replace('https://www.kayak.comhttps://servedbyadbutler.com/','https://servedbyadbutler.com/')
-              //console.log('URI => ',URI)
-              console.error('ESTOS SON LOS PUBLISHERS',publisher)
-              /*if (publisher.name === 'CheapFlights') {
-                URI = localStorage.getItem('')
-              }*/
               if (publisher.name === 'smartfares') {
                 URI = 'https://servedbyadbutler.com/redirect.spark?MID=187841&plid=2612318&setID=757110&channelID=0&CID=0&banID=522438433&PID=0&textadID=0&tc=1&type=tclick&mt=1&hc=6d2cbe0a11c04b034e50a8e6ce5097f8f5d022bb&location='+publisher.deepLink;
                 
               }
-              
-              
+
+              const isBlocked = isIframeBlockedBrand(publisher?.name ?? '');
 
               return (
                 <GridItem
@@ -112,7 +111,8 @@ export default function CompareResults({
                   height="75vh"
                   className={`iframe-${publisher.providerCode}`}>
                   <Flex
-                    bg="blumine.500"
+                    color="black"
+                    bg="#dde3e9"
                     justifyContent="space-between"
                     alignItems="center"
                     height="44px"
@@ -170,7 +170,7 @@ export default function CompareResults({
                                   const box = document.querySelector(
                                     `.iframe-${publisher.providerCode}`
                                   ) as HTMLElement;
-
+ 
                                   if (box) {
                                     box.classList.add('iframe__fullscreen');
                                   }
@@ -199,7 +199,30 @@ export default function CompareResults({
                       )}
                     </HStack>
                   </Flex>
-                  <iframe width="100%" height="100%" src={ publisher.name == 'CheapFlights' ? localStorage.getItem('cf_link')! :URI  } />
+
+                  {isBlocked && (
+                    <Center height="100%">
+                      <Button
+                        as="a"
+                        colorScheme="jaffa"
+                        size="lg"
+                        title="Click here to Open Offer In New Tab"
+                        target="_blank"
+                        href={ publisher.name == 'CheapFlights' ? localStorage.getItem('cf_link')! :URI  }>
+                        Open {publisher.name} Offer In New Tab
+                      </Button>
+                    </Center>
+                  )}
+
+                  {!isBlocked && (
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={ publisher.name == 'CheapFlights' ? localStorage.getItem('cf_link')! :URI  }
+                      loading="lazy"
+                      mobile-responsive
+                    />
+                  )}
                 </GridItem>
               );
             })}
